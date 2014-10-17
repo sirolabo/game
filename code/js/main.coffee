@@ -2,8 +2,11 @@ global.isLocalTest = true
 # global.serverURL = "http://test1-sirolabo.rhcloud.com/"
 # global.serverURL = "http://test2-sirolabo.rhcloud.com/"
 
-paper.install(window)
+# canvas = require("canvas")
+canvasEditor = require("canvasEditor")
+
 window.onload = () ->
-  paper.setup('viewport')
-  game = require("game")
-  game.core.start("#viewport")
+  canvasEditor.core.init()
+  # canvas.core.init('viewport')
+  # game = require("game")
+  # game.core.start()

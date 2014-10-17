@@ -1,7 +1,7 @@
 ###
 	require
 ###
-require('node-monkey').start({host: "127.0.0.1", port:"50500"})
+# require('node-monkey').start({host: "127.0.0.1", port:"50500"})
 r =
 	express: require('express')
 	logger: require('morgan')
@@ -29,11 +29,10 @@ app.set('views', path.views)
 	middleware
 ###
 app.use(r.logger('dev'))
-#app.use(r.express.favicon(localPath + 'favicon.ico'))
 app.use('/public', r.express.static(r.path.join(__dirname, path.public)))
 app.use((err, req, res, next)->
 	console.error(err.stack)
-	res.send(500, 'Fatal Error')
+	# res.send(500, 'Fatal Error')
 )
 
 ###
@@ -76,9 +75,8 @@ io.on('connection', (socket) ->
 app.get('/*', (req, res) ->
 	param = {}
 	param.load =
-		cssEditor: true
+		cssEditor: false
 		canvasEditor: false
-	
 	if req.params[0] then viewName = req.params[0] else viewName = "index"
 	res.render(
 		app.get("views") + viewName + ".jade"
@@ -94,5 +92,6 @@ app.get('/*', (req, res) ->
 				res.send("404 file not found")
 			else
 				res.send(html)
+				res.end()
 	)
 )

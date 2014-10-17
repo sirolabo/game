@@ -4,11 +4,6 @@
  */
 var app, io, ip, path, port, r, server;
 
-require('node-monkey').start({
-  host: "127.0.0.1",
-  port: "50500"
-});
-
 r = {
   express: require('express'),
   logger: require('morgan'),
@@ -51,8 +46,7 @@ app.use(r.logger('dev'));
 app.use('/public', r.express["static"](r.path.join(__dirname, path["public"])));
 
 app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  return res.send(500, 'Fatal Error');
+  return console.error(err.stack);
 });
 
 
@@ -106,7 +100,7 @@ app.get('/*', function(req, res) {
   var param, viewName;
   param = {};
   param.load = {
-    cssEditor: true,
+    cssEditor: false,
     canvasEditor: false
   };
   if (req.params[0]) {
@@ -124,7 +118,8 @@ app.get('/*', function(req, res) {
       res.send(err);
       return res.send("404 file not found");
     } else {
-      return res.send(html);
+      res.send(html);
+      return res.end();
     }
   });
 });

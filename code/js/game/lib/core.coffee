@@ -2,20 +2,31 @@
   @class game.core
   基本となるメソッドを扱います。
 ###
-core = require('core')
-data = require("./data")
-config = require("./config").config
-
+r = {}
+r.core = require('core')
+r.data = require("./data")
+r.config = require("./config").config
+r.canvas = require("canvas")
 debug = true
+
 #==============================================================================
 # method
 #==============================================================================
 ###*
   @method start
   ゲームを開始します。
-  @param {String} divName ゲーム描画先のdiv名
 ###
-exports.start = (divName) ->
+exports.start = () ->
+  # rect = new Path.Rectangle( [0,0,100,100])
+  # rect.fillColor = "blue"
+  # rect.add(new Point(0, 0))
+
+  # path = new Path.Circle(
+  #   center: view.center,
+  #   radius: 30,
+  #   strokeColor: 'red'
+  # )
+
   #パラメータ初期化
   # data.layer["bg"] = new Layer({name: "bg"})
   # data.layer["bg"] = new layer({id:"bg"})
@@ -26,14 +37,17 @@ exports.start = (divName) ->
   # data.layer["bg"].show()
 
   # #デバックモード起動
-  if debug
-    data.layer["debug"] = new Layer({name: "debug"})
+  # if debug
+  #   r.data.layer["debug"] = new Layer({name: "debug"})
     # data.layer["debug"] = new layer.layer({id:"debug"})
     # data.layer["debug"].show()
-    editor = require("../systemEditor")
+    # editor = require("../systemEditor")
   
   #開始画面表示
   #@title()
+
+# view.onFrame = () ->
+#   console.log "test"
 
 ###*
   @method title

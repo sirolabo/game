@@ -72,10 +72,10 @@ save = (param) =>
           layerObj        : data.layer["debug"].obj
           gui_objData     : @gui_objData
         }
-  io.emit 'systemEditor_save', JSON.stringify(makeSaveData())
+  io.emit 'fs_write', {fileName:"./webroot/public/js/canvasEditor/common.json", data:JSON.stringify(makeSaveData())}
 
 load = (param) =>
-  io.emit 'systemEditor_load'
+  io.emit 'fs_read', {fileName:"./webroot/public/js/canvasEditor/common.json", id:"canvasEditor_load"}
 
 create = (param) =>
   headerID = getHaederID(param.id)

@@ -228,3 +228,16 @@ footer #copyright {
   width: 200px;
   display: inline-block;
 }
+html {
+  overflow-y: hidden;
+}
+#viewport {
+  width: 100%;
+  height: 1080px;
+  background-color: #000;
+}
+#viewport canvas {
+  position: absolute;
+  width: 100%;
+  display: none;
+}
